@@ -1,8 +1,8 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-import { app } from '../firebase';
-import { useDispatch } from 'react-redux';
-import { signInSuccess } from '../redux/user/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { app } from "../firebase";
+import { useDispatch } from "react-redux";
+import { signInSuccess } from "../redux/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function OAuth() {
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ export default function OAuth() {
       // console.log(result.user.displayName)
       // console.log(result.user.email)
       // console.log(result.user.photoURL)
-      const res = await fetch('/api/auth/google', {
-        method: 'POST',
+      const res = await fetch("/api/auth/google", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: result.user.displayName,
@@ -29,16 +29,16 @@ export default function OAuth() {
       });
       const data = await res.json();
       dispatch(signInSuccess(data));
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.log('could not sign in with google', error);
+      console.log("could not sign in with google", error);
     }
   };
   return (
     <button
       onClick={handleGoogleClick}
-      type='button'
-      className='bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95'
+      type="button"
+      className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
     >
       Continue with google
     </button>
