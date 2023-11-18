@@ -13,7 +13,9 @@ export default function OAuth() {
       const auth = getAuth(app);
 
       const result = await signInWithPopup(auth, provider);
-
+      // console.log(result.user.displayName)
+      // console.log(result.user.email)
+      // console.log(result.user.photoURL)
       const res = await fetch('/api/auth/google', {
         method: 'POST',
         headers: {

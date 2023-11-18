@@ -18,7 +18,7 @@ const userSchema= new mongoose.Schema({
     },
     avatar:{
         type:String,
-        default: "http://www.gravatar.com/avatar/?d=identicon"
+        default: "https://robohash.org/1?set=set2&size=50x50"
     },
 }, 
     {timestamps:true});
